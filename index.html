@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Assignment</title>
+  </head>
+  <body>
+    <h1>Problem 1</h1>
+    <script class="Problem 1">
+      // Problem 1
+
+      const printAllPossibleString = (set, k) => {
+        let n = set.length;
+        printAllPossibleStringRec(set, "", n, k);
+      };
+
+      const printAllPossibleStringRec = (set, prefix, n, k = 3) => {
+        if (k == 0) {
+          return document.write(prefix + " " + "</br>");
+        }
+
+        for (let i = 0; i < n; ++i) {
+          let newPrefix = prefix + set[i];
+          printAllPossibleStringRec(set, newPrefix, n, k - 1);
+        }
+      };
+
+      printAllPossibleString("abc");
+    </script>
+
+    <h1>Problem 2</h1>
+    <script>
+      function reverseArray(row, arr, type) {
+        const M = row;
+        const N = row;
+
+        if (type == "column") {
+          for (i = 0; i < M; i++) {
+            var start = 0;
+            var end = N - 1;
+            while (start < end) {
+              var temp = arr[i][start];
+              arr[i][start] = arr[i][end];
+              arr[i][end] = temp;
+              start++;
+              end--;
+            }
+          }
+        } else if (type == "row") {
+          for (i = 0; i < M; i++) {
+            var start = 0;
+            var end = N - 1;
+
+            while (start < end) {
+              var temp = arr[start][i];
+              arr[start][i] = arr[end][i];
+              arr[end][i] = temp;
+
+              start++;
+              end--;
+            }
+          }
+        }
+
+        for (i = 0; i < M; i++) {
+          for (j = 0; j < N; j++) {
+            document.write(arr[i][j] + " ");
+          }
+          document.write("<br/>");
+        }
+      }
+      var arr = [
+        [1, 2],
+        [3, 4],
+      ];
+
+      reverseArray(2, arr, "column");
+    </script>
+
+    <h1>Problem 3</h1>
+    <p>Output in Console</p>
+    <script>
+      function result(start, end) {
+        let variableo1 = [];
+        let variableo2 = [];
+        let variableo3 = [];
+        let variableo4 = [];
+        for (let num = start; num < end + 1; num++) {
+          if (num % 3 == 0 || num % 5 == 0) {
+            variableo1.push(num);
+          }
+          if (num % 3 == 0 && num % 5 == 0) {
+            variableo2.push(num);
+          }
+          if (num % 3 == 0 && num % 5 !== 0) {
+            variableo3.push(num);
+          }
+          if (num % 3 !== 0 && num % 5 == 0) {
+            variableo4.push(num);
+          }
+        }
+        console.log(variableo1);
+        console.log(variableo2);
+        console.log(variableo3);
+        console.log(variableo4);
+      }
+      result(1, 10);
+    </script>
+    <h1>Problem 4</h1>
+    <script>
+      function binaryToDecimal(n) {
+        let num = n;
+        let dec_value = 0;
+        let base = 1;
+        let temp = num;
+        while (temp) {
+          let last_digit = temp % 10;
+          temp = Math.floor(temp / 10);
+          dec_value += last_digit * base;
+          base = base * 2;
+        }
+        return dec_value;
+      }
+
+      function toGetclass(ele) {
+        for (i = 0; i < arr1.length; i++) {
+          if (ele[i] < 128) {
+            A++;
+          } else if (ele[i] < 192) {
+            B++;
+          } else if (ele[i] < 224) {
+            C++;
+          } else if (ele[i] < 240) {
+            D++;
+          } else {
+            E++;
+          }
+        }
+        document.write(`A = ${A}; B = ${B}; C = ${C}; D = ${D}; E = ${E}`);
+      }
+
+      let arr1 = [];
+      let arr2 = [];
+      let A = 0;
+      let B = 0;
+      let C = 0;
+      let D = 0;
+      let E = 0;
+      let num = [
+        "11111111.10101010.01010101.11001100",
+        "11110000.00000000.11111111.00000001",
+        "10001000.01010101.10100000.10101000",
+        "11000000.11111111.11111111.11111111",
+        "11100000.10101010.00000000.11111111",
+        "01000000.10101000.01010101.10000000",
+      ];
+      for (let index = 0; index < num.length; index++) {
+        const element = num[index];
+        let f_num = num[index];
+        let ind_num = f_num.split(".");
+        arr2.push(ind_num.join("."));
+      }
+      for (let i = 0; i < arr2.length; i++) {
+        const element = arr2[i];
+        arr1.push(binaryToDecimal(parseInt(element)));
+      }
+
+      toGetclass(arr1);
+    </script>
+    <br />
+    <h1>Problem 5</h1>
+    <script>
+      function distanceTravelled(code) {
+        let distance = code.length;
+        document.write(distance);
+      }
+
+      distanceTravelled("NNNNEEENE");
+    </script>
+  </body>
+</html>
